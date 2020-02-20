@@ -11,7 +11,7 @@ namespace TwitterScraper.API.Entidades
             Autor = autor;
             DataPublicacao = dataPublicacao;
             Texto = texto;
-            MensagemHashtags = hashtags.Select(hashtag => new MensagemHashtag(this, hashtag));
+            MensagemHashtags = hashtags.Select(hashtag => new MensagemHashtag(this, hashtag)).ToList();
         }
 
         private Mensagem()
@@ -23,6 +23,6 @@ namespace TwitterScraper.API.Entidades
         public DateTime DataPublicacao { get; }
         public string Texto { get; }
 
-        public IEnumerable<MensagemHashtag> MensagemHashtags { get; set; }
+        public ICollection<MensagemHashtag> MensagemHashtags { get; }
     }
 }
