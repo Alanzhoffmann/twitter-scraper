@@ -10,6 +10,10 @@ namespace TwitterScraper.API.Entidades
             Hashtag = hashtag;
         }
 
+        private MensagemHashtag()
+        {
+        }
+
         public Guid Id { get; set; }
         public Guid MensagemId { get; }
         public Mensagem Mensagem { get; }
