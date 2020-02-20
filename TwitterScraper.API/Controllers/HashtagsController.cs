@@ -22,12 +22,12 @@ namespace TwitterScraper.API.Controllers
             return await _dbContext.Hashtags.Select(h => h.Texto).ToListAsync();
         }
 
-        [HttpPost("{hashtag}")]
-        public async Task<IActionResult> Save(string hashtag)
+        [HttpPost]
+        public async Task<IActionResult> Save([FromBody] SalvarHashtagCommand command)
         {
-            if (!await _dbContext.Hashtags.AnyAsync(h => h.Texto == hashtag))
+            if (!await _dbContext.Hashtags.AnyAsync(h => h.Texto == command.Hashtag))
             {
-                _dbContext.Hashtags.Add(new Entidades.Hashtag(hashtag));
+                _dbContext.Hashtags.Add(new Entidades.Hashtag(command.Hashtag));
                 await _dbContext.SaveChangesAsync();
             }
 
@@ -48,5 +48,10 @@ namespace TwitterScraper.API.Controllers
 
             return Ok();
         }
+    }
+
+    public class SalvarHashtagCommand
+    {
+        public string Hashtag { get; set; }
     }
 }
