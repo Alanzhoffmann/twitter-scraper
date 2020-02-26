@@ -31,8 +31,6 @@ namespace TwitterScraper.API
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            UpdateDatabase(app);
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -57,17 +55,6 @@ namespace TwitterScraper.API
             {
                 endpoints.MapControllers();
             });
-        }
-
-        private static void UpdateDatabase(IApplicationBuilder app)
-        {
-            using var serviceScope = app.ApplicationServices
-                .GetRequiredService<IServiceScopeFactory>()
-                .CreateScope();
-
-            using var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
-
-            context.Database.Migrate();
         }
     }
 }
