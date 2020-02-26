@@ -11,9 +11,9 @@ namespace TwitterScraper.API.Controllers
     [Route("api/[controller]")]
     public class MensagensController : Controller
     {
-        private readonly AppContext _dbContext;
+        private readonly AppDbContext _dbContext;
 
-        public MensagensController(AppContext dbContext)
+        public MensagensController(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }

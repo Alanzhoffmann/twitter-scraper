@@ -3,9 +3,9 @@ using TwitterScraper.API.Entidades;
 
 namespace TwitterScraper.API
 {
-    public class AppContext : DbContext
+    public class AppDbContext : DbContext
     {
-        public AppContext(DbContextOptions<AppContext> options) : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
 

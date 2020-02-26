@@ -9,9 +9,9 @@ namespace TwitterScraper.API.Controllers
     [Route("api/[controller]")]
     public class HashtagsController : Controller
     {
-        private readonly AppContext _dbContext;
+        private readonly AppDbContext _dbContext;
 
-        public HashtagsController(AppContext dbContext)
+        public HashtagsController(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
